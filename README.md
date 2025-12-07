@@ -40,49 +40,59 @@ public String getQuestion() { ... }
 public String[] getOptions() { ... }
 public int getAnswer() { ... }
 
+```
 ### 3. Abstraction
 The design utilizes an abstract parent class, Subject.
 
-Java
+```java
 
 abstract class Subject { 
     // abstract methods and common fields go here
 }
+
+``` 
 Users cannot create a Subject object directly. The core complexity of specific question implementation is hidden, and users interact only with the necessary features.
 
-4. Inheritance
+### 4. Inheritance
 The subject-specific classes inherit common properties and methods from the abstract parent class, promoting code reuse.
 
-Java
+```java
 
 class Maths extends Subject { ... }
 class English extends Subject { ... }
 class Science extends Subject { ... }
-5. Polymorphism & Dynamic Binding
+```
+
+#### 5. Polymorphism & Dynamic Binding
 The system uses a single reference type (Subject) to point to different object types (Maths, English, Science).
 
-Java
+```java
 
 Subject subject;
 
 // Polymorphism: Single reference holds different object types
 if (choice == 1) subject = new Maths(); 
 // ...
+```
+
 When subject.getQuestions() is called, Java decides at runtime which specific method to execute (Dynamic Method Dispatch), based on the actual object instance.
 
-6. File Handling (Persistent Storage)
+### 6. File Handling (Persistent Storage)
 Scores are saved in append mode (true) to results.txt, ensuring persistent storage of all quiz attempts.
 
-Java
+```java
 
 // Example usage of FileWriter (ResultSaver Class)
 FileWriter fw = new FileWriter("results.txt", true);
 fw.write("Subject: " + subject.getName() + " Score: " + score + "/" + total + "\n");
 // ... close writer
-7. Exception Handling (Robustness)
+```
+
+### 7. Exception Handling (Robustness)
 A try-catch block is implemented around user input to handle non-numeric input gracefully, preventing program termination.
 
-Java
+
+```java
 
 try {
     return sc.nextInt();
@@ -90,6 +100,11 @@ try {
     System.out.println("Error: Enter numbers only. Please try again.");
     sc.next(); // Clears the bad input
 }
-🚀 How to Run the Project
-Compile: Navigate to the source directory and compile the main file.
+```
+
+### 🚀 How to Run the Project
+
+Compile: javac QuizApp1.java
+Run: java QuizApp1
+
 
